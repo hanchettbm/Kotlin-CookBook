@@ -1,10 +1,11 @@
 import java.util.Scanner
 
-fun add() {
+data class Recipe(var recipeName: String?, val recipe:MutableMap<String, Any?>)
+
+fun add(): Recipe {
     print("What are you making: ")
-    val recipeName: String? = readLine()
+    val recipeName = readLine()
     val recipe = mutableMapOf<String, Any?>()
-    recipe["Recipe Name"] = recipeName
     var leave = false
     while (!leave) {
         val scanner = Scanner(System.`in`)
@@ -50,10 +51,7 @@ fun add() {
             else -> "Stove: Off"
         }
         recipe["CookingTemp"] = stoveTemp
-    } else {
-        println ("Wrong input")
     }
-
 
     print("How long is the cook time (In Minutes): ")
     val cookTime : String = readLine() + " min"
@@ -64,36 +62,96 @@ fun add() {
     val instructions : String? = readLine()
     recipe["Instructions"] = instructions
 
-    println(recipe)
+    return Recipe(recipeName, recipe)
+}
+
+fun view(cookBook: MutableMap<String?, Any?>) {
+
+    val scanner = Scanner(System.`in`)
+    println("What would you like to view? 1) Your Cookbook 2) A specific Recipe")
+    print("> ")
+    val input = scanner.nextInt()
+    print("\n")
+
+    if (input == 1){
+        cookBook.forEach { (k, v) ->
+            println("Recipe For: $k")
+
+            val recipe: MutableMap<String?, Any?> = v as MutableMap<String?, Any?>
+            recipe.forEach { (k, v) ->
+                println("$k = $v")
+            }
+            print("\n")
+        }
+
+    }
+    if (input == 2){
+
+        println("What Recipe do you want to view?")
+        print("Name: ")
+        val recipeName = readLine()
+
+        cookBook.forEach { (k, v) ->
+            if (recipeName == k){
+                println("Recipe For: $k")
+
+                val recipe: MutableMap<String?, Any?> = v as MutableMap<String?, Any?>
+                recipe.forEach { (k, v) ->
+                    println("$k = $v")
+                }
+            }
+            print("\n")
+        }
+
+    }
+}
+
+fun remove(cookBook: MutableMap<String?, Any?>){
+    val scanner = Scanner(System.`in`)
+    println("Would you like to remove 1) A Recipe 2) Your Entire Cookbook")
+    print("> ")
+    val input = scanner.nextInt()
+    print("\n")
+
+    if (input == 1){
+        println("What Recipe do you want to remove?")
+        print("Name: ")
+        val recipeName = readLine()
+        cookBook.remove(recipeName)
+        println("Recipe for $recipeName Removed")
+    }
+
+    if (input == 2){
+        cookBook.clear()
+        println("Cookbook Removed")
+    }
+
 }
 
 fun main() {
     var leave = false
+    val cookBook = mutableMapOf<String?, Any?>()
     while (!leave) {
         val scanner = Scanner(System.`in`)
         println("Welcome to your CookBook! What would you like to do?")
-        println("A) Add a recipe B) Remove a recipe C) View a recipe D) View CookBook Q) Quit")
+        println("A) Add a recipe B) Remove C) View Q) Quit")
         print("> ")
         val input : String = scanner.next().uppercase()
 
         if (input == "A") {
-            add()
+            val (recipeName, recipe) = add()
+            cookBook[recipeName] = recipe
+            print("\n")
         }
         if (input == "B") {
-            println ("Testing B")
+            remove(cookBook)
         }
         if (input == "C") {
-            println ("Testing C")
-        }
-        if (input == "D") {
-            println ("Testing D")
+            view(cookBook)
         }
         if (input == "Q") {
             println ("Goodbye!")
             leave = true
         }
-
-
     }
-
 }
