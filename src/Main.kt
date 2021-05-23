@@ -131,7 +131,6 @@ fun remove(cookBook: MutableMap<String?, Any?>){
     println("Would you like to remove 1) A Recipe 2) Your Entire Cookbook")
     print("> ")
     val input = scanner.nextInt()
-    print("\n")
 
     if (input == 1){
 //      Check user input to find recipe.
@@ -171,6 +170,7 @@ fun main() {
         if (input == "B") {
 //          Calls remove function and passes in the Cookbook.
             remove(cookBook)
+            print("\n")
         }
         if (input == "C") {
 //          Calls view function and passes in the Cookbook.
