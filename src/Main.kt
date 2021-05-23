@@ -93,7 +93,7 @@ fun view(cookBook: MutableMap<String?, Any?>) {
         cookBook.forEach { (k, v) ->
             println("Recipe For: $k")
 
-//          Cookbook Value is another mutable map so display those pars for the user to see.
+//          Cookbook Value is another mutable map so display those pairs for the user to see.
             val recipe: MutableMap<String?, Any?> = v as MutableMap<String?, Any?>
             recipe.forEach { (k, v) ->
                 println("$k = $v")
