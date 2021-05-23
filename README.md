@@ -10,11 +10,9 @@ Purpose:
 My purpose for writing this software was to find a simple yet useful
 way to learn the Kotlin program language and its syntax. I also wanted to 
 learn how the user could interact with the program and do it in a way that 
-was practical and useful. A cookbook was a good answer for storing data. 
+was practical and useful. A cookbook was a good answer for storing data.
 
-{Focus should be on sharing what you learned about the language syntax.}
-
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/X7MTNeYE9fY)
 
 # Development Environment
 
