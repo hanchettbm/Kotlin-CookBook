@@ -94,6 +94,7 @@ fun view(cookBook: MutableMap<String?, Any?>) {
             println("Recipe For: $k")
 
 //          Cookbook Value is another mutable map so display those pairs for the user to see.
+            @Suppress("UNCHECKED_CAST")
             val recipe: MutableMap<String?, Any?> = v as MutableMap<String?, Any?>
             recipe.forEach { (k, v) ->
                 println("$k = $v")
@@ -115,6 +116,7 @@ fun view(cookBook: MutableMap<String?, Any?>) {
                 println("Recipe For: $k")
 
 //              If True display that value as its own map loop.
+                @Suppress("UNCHECKED_CAST")
                 val recipe: MutableMap<String?, Any?> = v as MutableMap<String?, Any?>
                 recipe.forEach { (k, v) ->
                     println("$k = $v")
