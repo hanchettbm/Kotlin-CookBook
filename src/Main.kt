@@ -85,10 +85,10 @@ fun view(cookBook: MutableMap<String?, Any?>) {
     val scanner = Scanner(System.`in`)
     println("What would you like to view? 1) Your Cookbook 2) A specific Recipe")
     print("> ")
-    val input = scanner.nextInt()
+    val input : String = scanner.next()
     print("\n")
 
-    if (input == 1){
+    if (input == "1"){
 //      Runs through each key and displays its values.
         cookBook.forEach { (k, v) ->
             println("Recipe For: $k")
@@ -102,7 +102,7 @@ fun view(cookBook: MutableMap<String?, Any?>) {
         }
 
     }
-    if (input == 2){
+    if (input == "2"){
 
 //      Get user input.
         println("What Recipe do you want to view?")
@@ -130,9 +130,9 @@ fun remove(cookBook: MutableMap<String?, Any?>){
     val scanner = Scanner(System.`in`)
     println("Would you like to remove 1) A Recipe 2) Your Entire Cookbook")
     print("> ")
-    val input = scanner.nextInt()
+    val input : String = scanner.next()
 
-    if (input == 1){
+    if (input == "1"){
 //      Check user input to find recipe.
         println("What Recipe do you want to remove?")
         print("Name: ")
@@ -142,7 +142,7 @@ fun remove(cookBook: MutableMap<String?, Any?>){
         println("Recipe for $recipeName Removed")
     }
 
-    if (input == 2){
+    if (input == "2"){
 //      Removes entire Cookbook.
         cookBook.clear()
         println("Cookbook Removed")
