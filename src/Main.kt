@@ -35,7 +35,6 @@ fun add(): Recipe {
     print("Will this be baked in the A) oven B) Stove: ")
     val bakeInput : String? = readLine()?.uppercase()
 
-
     if (bakeInput == "A") {
         print("What will be the Oven temp in \u2109: ")
         var bakeTemp: String? = readLine()
@@ -102,7 +101,6 @@ fun view(cookBook: MutableMap<String?, Any?>) {
             }
             print("\n")
         }
-
     }
 }
 
@@ -125,7 +123,6 @@ fun remove(cookBook: MutableMap<String?, Any?>){
         cookBook.clear()
         println("Cookbook Removed")
     }
-
 }
 
 fun main() {
